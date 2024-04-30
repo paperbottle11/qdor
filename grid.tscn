@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qvsj5fo8lj0s"]
+
+[ext_resource type="Texture2D" uid="uid://b0mv5vxco0t5w" path="res://grid_cell.png" id="1_khxj1"]
+
+[node name="Grid" type="Sprite2D"]
+position = Vector2(32, 32)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_khxj1")
