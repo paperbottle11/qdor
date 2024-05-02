@@ -3,6 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://crsfvje0muh30" path="res://wall.png" id="1_cti6p"]
 
 [node name="Wall" type="Sprite2D"]
-scale = Vector2(1, 0.5)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_cti6p")
 offset = Vector2(64, 10)
