@@ -9,22 +9,29 @@ var grid_size = 64
 var player_positions = [[4,1],[5,8],[3,3]]
 var walls = []
 
+@onready var get_state = $HTTPGet
+@onready var net = $HTTPRequest
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(17):
-		var row = []
-		for j in range(17):
-			row.append(0)
-		walls.append(row)
-	walls[4][1] = 1
-	walls[6][1] = 1
-	walls[1][0] = 1
-	walls[1][2] = 1
-	print(walls)
-
+	#for i in range(17):
+		#var row = []
+		#for j in range(17):
+			#row.append(0)
+		#walls.append(row)
+	#walls[4][1] = 1
+	#walls[6][1] = 1
+	#walls[1][0] = 1
+	#walls[1][2] = 1
+	#print(walls)
+	net.connect_to_server()
 	rebuild_board()
 
 func rebuild_board():
+	await get_state.refresh_state()
+	walls = get_state.current_data["board"]
+	player_positions = get_state.current_data["users"]
+	print("Pos:", player_positions)
 	draw_board()
 	draw_players()
 	draw_walls()
@@ -59,11 +66,7 @@ func draw_walls():
 				if wallstemp[i][j] == 1:
 					place_wall(j/2,ceil(i/2)+1,0)
 
-func place_wall(x, y, direction):
-	if type_string(typeof(x)) != "int" or type_string(typeof(y)) != "int" or type_string(typeof(direction)) != "int":
-		print("Error: wall input is not of type integer")
-		return
-	
+func place_wall(x, y, direction):	
 	var wall = wall_scene.instantiate()
 	wall.rotation = deg_to_rad(90) if direction == 1 else 0
 	
@@ -74,7 +77,10 @@ func place_wall(x, y, direction):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept"):
+		net.add_wall(2,1, 4,1)
+		print(walls)
+		rebuild_board()
 		#place_wall(1,1,0)
 		#place_wall(2,1,0)
 	pass
