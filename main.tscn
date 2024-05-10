@@ -12,3 +12,31 @@ script = ExtResource("2_xrmca")
 
 [node name="HTTPGet" type="HTTPRequest" parent="."]
 script = ExtResource("3_7nro2")
+
+[node name="Message" type="RichTextLabel" parent="."]
+offset_left = 629.0
+offset_top = 130.0
+offset_right = 877.0
+offset_bottom = 434.0
+text = "It's your opponent's move!"
+
+[node name="Controls" type="RichTextLabel" parent="."]
+offset_left = 629.0
+offset_top = 28.0
+offset_right = 877.0
+offset_bottom = 200.0
+text = "W - Wall Mode
+P - Move Mode"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Button" type="Button" parent="."]
+offset_left = 891.0
+offset_top = 582.0
+offset_right = 1140.0
+offset_bottom = 636.0
+text = "Reset Game
+(both players must restart app)"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

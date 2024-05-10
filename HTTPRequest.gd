@@ -10,7 +10,8 @@ func connect_to_server():
 	request("https://arnavkarekar.pythonanywhere.com/connect")
 	await get_tree().create_timer(1).timeout
 	if return_data != "Game is full":
-		Global.id = int(return_data)
+		if type_string(typeof(return_data)) == "String":
+			Global.id = int(return_data)
 
 func move(x,y):
 	request("https://arnavkarekar.pythonanywhere.com/move?x=%d&y=%d&player=%d" % [x, y, Global.id])
