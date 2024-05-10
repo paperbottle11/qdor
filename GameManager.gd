@@ -187,6 +187,7 @@ func _process(delta):
 					# up
 					if walls[player_pos[1]*2-1][player_pos[0]*2] == 1:
 						return
+				if grid_pos in player_positions: return
 				players[Global.id-1].position = Vector2(grid_size * (grid_pos[0] + 1), grid_size * (grid_pos[1] + 1))
 				place_mode = null
 				player_highlight.visible = false
