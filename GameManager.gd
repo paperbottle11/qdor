@@ -49,6 +49,8 @@ func _ready():
 
 func refresh():
 	await get_state.refresh_state()
+	while get_state.current_data == null:
+		await get_state.refresh_state()
 	walls = get_state.current_data["board"]
 	player_positions = get_state.current_data["users"]
 	print(player_positions)
