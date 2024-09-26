@@ -1,4 +1,4 @@
-# Multiplayer Backend Game API
+# Qdor Multiplayer Game
 
 This project is an online multiplayer implementation of the game **Quoridor** using Godot. The backend is developed with Flask to handle multiple players, moves, and board interactions. Quoridor is a strategy board game where players aim to reach the opposite side of the board while strategically placing walls to block opponents.
 
